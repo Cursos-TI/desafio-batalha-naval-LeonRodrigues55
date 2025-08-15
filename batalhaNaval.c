@@ -3,10 +3,7 @@
 int main() {
     int tamanho = 10;
     int tamanhoNavio = 3;
-
     int tabuleiro[10][10];
-    int navio1[3] = {3, 3, 3}; //horizontal
-    int navio2[3] = {3, 3, 3}; //vertical
 
     //Logica do tabuleiro
     for (int i = 0; i < tamanho; i++) {
@@ -15,31 +12,37 @@ int main() {
         }
     }
 
-    //Navios no tabuleiro
-    int linhaNavio1 = 1; 
-    int colunaNavio1 = 3; 
-
-    int linhaNavio2 = 5; 
-    int colunaNavio2 = 1; 
-
-    //pocição do navio 1 (horizontal)
+    //Navio 1: Horizontal
+    int l1 = 2, c1 = 3;
     for (int i = 0; i < tamanhoNavio; i++) {
-        tabuleiro[linhaNavio1][colunaNavio1 + i] = navio1[i];
+        tabuleiro[l1][c1 + i] = 3;
     }
 
-    //pocição do navio 2 (vertical)
+    //Navio 2: Vertical
+    int l2 = 5, c2 = 1;
     for (int i = 0; i < tamanhoNavio; i++) {
-        tabuleiro[linhaNavio2 + i][colunaNavio2] = navio2[i];
+        tabuleiro[l2 + i][c2] = 3;
     }
 
-    //Mensagem inicial junto com as letras horizontais (coordenadas)
-    printf("****TABULEIRO BATALHA NAVAL\n\n****");
+    //Navio 3: Diagonal esquerdo
+    int l3 = 0, c3 = 0;
+    for (int i = 0; i < tamanhoNavio; i++) {
+        tabuleiro[l3 + i][c3 + i] = 3;
+    }
+
+    //Navio 4: Diagonal direito
+    int l4 = 0, c4 = tamanho - 1;
+    for (int i = 0; i < tamanhoNavio; i++) {
+        tabuleiro[l4 + i][c4 - i] = 3;
+    }
+
+    //Tabuleiro na tela
+    printf("   TABULEIRO BATALHA NAVAL\n\n   ");
     for (int letra = 0; letra < tamanho; letra++) {
         printf(" %c", 'A' + letra);
     }
     printf("\n");
 
-    //Números na vertical (coordenadas)
     for (int i = 0; i < tamanho; i++) {
         printf("%2d ", i + 1);
         for (int j = 0; j < tamanho; j++) {
